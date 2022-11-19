@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
 
-    public float jumpForce;
     private Rigidbody rb;
     public bool isGrounded;
     Vector3 movement;
@@ -22,30 +21,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
-        movement.z = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector3(1, 0, 0) * Time.deltaTime * moveSpeed * movement.x);
-        transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed * movement.z);
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        movement.y = Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector2(1, 0) * Time.deltaTime * moveSpeed * movement.x);
+        transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed * movement.y);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             print("Interagir");
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Background")
-        {
-            isGrounded = true;
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.name == "Background")
-        {
-            isGrounded = false;
         }
     }
 }
