@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Som dos passos
         if (movement.magnitude > 0.5f) playSteps();
+        else StepSound.Stop();
     }
 
     void playSteps()
