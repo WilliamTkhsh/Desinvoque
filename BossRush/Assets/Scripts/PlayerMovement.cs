@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        // StepSound = GetComponent<AudioSource> ();    
     }
     // Update is called once per frame
     void Update()
@@ -26,12 +25,6 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector2(1, 0) * Time.deltaTime * moveSpeed * movement.x);
         transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed * movement.y);
-
-        // Interacao
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            print("Interagir");
-        }
 
         // Som dos passos
         if (movement.magnitude > 0.5f) playSteps();
