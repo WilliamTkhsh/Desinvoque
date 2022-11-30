@@ -5,6 +5,7 @@ using UnityEngine;
 public class totem_solution : MonoBehaviour
 {
     public int total_totems = 12;
+    [SerializeField] private GameObject win;
     private int current_active = 1;
     private bool solved = false;
 
@@ -30,5 +31,6 @@ public class totem_solution : MonoBehaviour
     {
         Debug.Log("Totens solucionados, fim do jogo");
         solved = true;
+        win.SetActive(true);
     }
 }
