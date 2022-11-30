@@ -11,11 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     public bool isGrounded;
+    public AudioSource StepSound;
     Vector3 movement;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();    
+        rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
@@ -25,9 +26,15 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(new Vector2(1, 0) * Time.deltaTime * moveSpeed * movement.x);
         transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed * movement.y);
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            print("Interagir");
-        }
+        // Som dos passos
+        if (movement.magnitude > 0.5f) playSteps();
+        else StepSound.Stop();
+    }
+
+    void playSteps()
+    {
+        if(StepSound.isPlaying) return;
+        StepSound.Play();
+        return;
     }
 }
