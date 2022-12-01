@@ -6,7 +6,7 @@ public class totem_solution : MonoBehaviour
 {
     public int total_totems = 12;
     [SerializeField] private GameObject win;
-    private int current_active = 1;
+    public int current_active = 1;
     private bool solved = false;
 
     private void FixedUpdate()
@@ -15,6 +15,11 @@ public class totem_solution : MonoBehaviour
         {
             totemSolved();
         }
+    }
+
+    public void enemySpeedup()
+    {
+        
     }
 
     public bool activateNextTotem(int id)
