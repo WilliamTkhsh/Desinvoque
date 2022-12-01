@@ -10,7 +10,7 @@ public class totem : MonoBehaviour
     [SerializeField] private totem_solution solution;
     public float repellDistance = 10.0f;
     private bool active = false;
-    private bool closeEnough = false;
+    [SerializeField] private bool closeEnough = false;
     private AudioSource audioSource;
 
     private void Start() {
