@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     [SerializeField] private GameObject lose;
     [SerializeField] private GameObject enemy;
+    public Animator animator;
     public bool gameLost;
     private Rigidbody rb;
     public AudioSource StepSound;
@@ -24,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
         transform.Translate(new Vector2(1, 0) * Time.deltaTime * moveSpeed * movement.x);
         transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed * movement.y);
 
