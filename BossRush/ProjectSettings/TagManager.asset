@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sound
   - Totem
+  - Enemy
   layers:
   - Default
   - TransparentFX

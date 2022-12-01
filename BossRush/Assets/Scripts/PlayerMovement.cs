@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed;
-
+    [SerializeField] private GameObject lose;
+    [SerializeField] private GameObject enemy;
+    public bool gameLost;
     private Rigidbody rb;
-    public bool isGrounded;
     public AudioSource StepSound;
     Vector3 movement;
 
@@ -36,5 +37,15 @@ public class PlayerMovement : MonoBehaviour
         if(StepSound.isPlaying) return;
         StepSound.Play();
         return;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")) {
+            gameLost = true;
+            moveSpeed = 0;
+            Destroy(enemy);
+        }
+
     }
 }
